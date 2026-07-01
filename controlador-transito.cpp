@@ -20,6 +20,7 @@ void ControladorTransito::cadastrarPassageiro(string nome, string locAtual) {
 
   Cidade* cidEncontrada = nullptr;
 
+
   for(Cidade* cid : cidades) {
     if(cid->getNome() == locAtual) {
       cidEncontrada = cid;
@@ -38,14 +39,33 @@ void ControladorTransito::cadastrarPassageiro(string nome, string locAtual) {
   cout << "O passageiro " << nome << " foi cadastrado na cidade " << locAtual << ".\n" << endl;
 }
 
-/* void ControladorTransito::cadastrarTrajeto(Cidade* nmorigem, Cidade* nmdest, char tpo, int dist) {
+ void ControladorTransito::cadastrarTrajeto(string nmorigem, string nmdest, char tpo, int dist) {
+    Cidade* cidOrigem = nullptr;
+    Cidade* cidDestino = nullptr;
 
-  Cidade* 
-    Trajeto* nvTrajeto = new Trajeto(nmorigem, nmdest, tpo, dist);
+    for (Cidade* cid : cidades) {
+        if (cid->getNome() == nmorigem) {
+            cidOrigem = cid;
+        }
+        if (cid->getNome() == nmdest) {
+            cidDestino = cid;
+        }
+    }
+   if (cidOrigem == nullptr) {
+        cout << "A cidade de origem [" << nmorigem << "] nao foi encontrada no mapa.\n" << endl;
+        return;
+    }
+
+    if (cidDestino == nullptr) {
+        cout << "A cidade de destino [" << nmdest << "] nao foi encontrada no mapa.\n" << endl;
+        return;
+    }
+
+    Trajeto* nvTrajeto = new Trajeto(cidOrigem, cidDestino, tpo, dist);
     trajetos.push_back(nvTrajeto);
-    cout << "O trajeto de " << nmorigem->getNome() << " para " << nmdest->getNome() << " foi cadastrado com sucesso." << endl;
-} */
 
+    cout << "O trajeto de " << nmorigem << " para " << nmdest << " foi cadastrado com sucesso.\n" << endl;
+}
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
   //  return this->nome;

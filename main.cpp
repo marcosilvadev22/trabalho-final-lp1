@@ -8,7 +8,9 @@ int main() {
 
     ControladorTransito controlador;
     int opcao = 0;
-    string nCidade;
+    string nCidade, nOrigem, nDestino;
+    char tVia;
+    int dist;
 
     while (opcao != 9) {
         cout << "=== GUANABARA EMPRESA DE TRANSPORTE COLETIVO S.A. ===\n" << endl;
@@ -23,6 +25,19 @@ int main() {
                 cout << "Digite o nome da cidade: ";
                 cin >> nCidade;
                 controlador.cadastrarCidade(nCidade);
+                break;
+            case 3: 
+                cout << "Digite o nome da cidade de origem: ";
+                cin >> ws;
+                getline(cin, nOrigem);
+
+                cout << "Digite o nome da cidade de destino: ";
+                getline(cin, nDestino);
+                cout << "Digite o tipo de via (A para asfalto, T para terra): ";
+                cin >> tVia;
+                cout << "Digite a distância entre as cidades: ";
+                cin >> dist;
+                controlador.cadastrarTrajeto(nOrigem, nDestino, tVia, dist);
                 break;
             case 9:
                 cout << "Saindo do sistema em 3,2,1..." << endl;

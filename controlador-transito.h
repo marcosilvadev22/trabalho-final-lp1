@@ -16,5 +16,5 @@ class ControladorTransito {
     //string getNome();
 
         void cadastrarPassageiro(std::string nome, std::string locAtual);
-        void cadastrarTrajeto(Cidade* nmorigem, Cidade* nmdest, char tpo, int dist);
+        void cadastrarTrajeto(std::string nmorigem, std::string nmdest, char tpo, int dist);
 };
