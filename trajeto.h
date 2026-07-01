@@ -1,10 +1,17 @@
 #pragma once
 #include <string>
+#include "cidade.h"
 
 class Trajeto {
 private:
-    std::string nome;
+    Cidade* origem;
+    Cidade* dest;
+    char tpo; 
+    int dist;
 public:
-    Trajeto(std::string nome);
-    std::string getNome();
+    Trajeto(Cidade* origem, Cidade* dest, char tpo, int dist);
+    Cidade* getOrigem();
+    Cidade* getDest();
+    char getTpo();
+    int getDist();
 };

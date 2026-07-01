@@ -2,12 +2,20 @@
 
 using namespace std;
 
-// Construtor vazio por enquanto
-Passageiro::Passageiro(string nome) {
-    this->nome = nome; 
+
+Passageiro::Passageiro(string nome, Cidade* locAtual) {
+    this->nome = nome;
+    this->locAtual = locAtual;
 }
 
-// Método vazio por enquanto
 string Passageiro::getNome() {
     return this->nome;
+}
+
+Cidade* Passageiro::getLocAtual() {
+    return this->locAtual;
+}
+
+void Passageiro::setLocAtual(Cidade* loc) {
+    this->locAtual = loc;
 }
