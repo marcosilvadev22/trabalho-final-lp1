@@ -8,7 +8,7 @@ int main() {
 
     ControladorTransito controlador;
     int opcao = 0;
-    string nCidade, nOrigem, nDestino, nTrans, nCidTrans;
+    string nCidade, nOrigem, nDestino, nTrans, nCidTrans, nVeic, nOrig, nDest;
     char tVia, tTrans;
     int dist, capc, veloc, distDesc, tempoDesc;
 
@@ -74,6 +74,19 @@ int main() {
                 getline(cin, nTrans);
 
                 controlador.embarcarPassageiro(nTrans, nTrans);
+                break;
+            case 6:
+                cout << "Digite o nome do Veiculo: ";
+                cin >> ws;
+                getline(cin, nVeic);
+
+                cout << "Digite o nome da cidade de origem do Veiculo: ";
+                getline(cin, nOrig);
+
+                cout << "Digite o nome da cidade de destino do veiculo: ";
+                getline(cin, nDest);
+
+                controlador.iniciarViagem(nVeic, nOrig, nDest);
                 break;
             case 9:
                 cout << "Saindo do sistema em 3,2,1..." << endl;

@@ -11,6 +11,8 @@ Transporte::Transporte(string nome, char tp, int capc, int veloc, int distDesc, 
     this->distDesc = distDesc;
     this->tempoDesc = tempoDesc;
     this->locAtual = locAtual;
+    this ->tjtAtual = nullptr;
+    this ->distPerc = 0;
 }
 
 // Método vazio por enquanto
@@ -52,4 +54,12 @@ bool Transporte::embarcar(Passageiro* p) {
         return true;
     }
     return false;
+}
+void Transporte::iniciarViagem(Trajeto* tjt) {
+    this->tjtAtual = tjt;
+    this->distPerc = 0;
+}
+
+Trajeto* Transporte::getTjtAtual() {
+    return this->tjtAtual;
 }

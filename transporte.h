@@ -3,6 +3,7 @@
 #include <vector>
 #include "cidade.h"
 #include "passageiro.h"
+#include "trajeto.h"
 
 class Transporte {
 private:
@@ -14,8 +15,10 @@ private:
     int veloc;
     int distDesc;
     int tempoDesc;
+    int distPerc;
 
     Cidade* locAtual;
+    Trajeto* tjtAtual;
     
 public:
     Transporte(std::string nome, char tp, int capc, int veloc, int distDesc, int tempoDesc, Cidade* locAtual);
@@ -31,4 +34,7 @@ public:
     void setLocAtual(Cidade* loc);
 
     bool embarcar(Passageiro* p);
+
+    void iniciarViagem(Trajeto* tjt);
+    Trajeto* getTjtAtual();
 };

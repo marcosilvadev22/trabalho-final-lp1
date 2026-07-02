@@ -140,6 +140,48 @@ void ControladorTransito::embarcarPassageiro(string nmPassageiro, string nmTrans
         cout << "Não foi possível embarcar o passageiro " << nmPassageiro << " no transporte " << nmTransp << ".\n" << endl;
     }} teste que deu errado */
 }
+
+void ControladorTransito::iniciarViagem(string nmTransp, string nmOrigTransp, string nmDest) {
+    Transporte* transpEncontrado = nullptr;
+    Trajeto* tjtEncontrado = nullptr;
+
+    for (Transporte* transp : transportes) {
+        if (transp->getNome() == nmTransp) {
+            transpEncontrado = transp;
+        }
+    }
+
+    for (Trajeto* tjt : trajetos) {
+        if (tjt->getOrigem()->getNome() == nmOrigTransp && tjt->getDest()->getNome() == nmDest) {
+            tjtEncontrado = tjt;
+            break;
+        }
+    }
+
+    if (transpEncontrado == nullptr) {
+        cout << "O transporte " << nmTransp << " não foi encontrado.\n" << endl;
+        return;
+    }
+
+    if (tjtEncontrado == nullptr) {
+        cout << "O trajeto de " << nmOrigTransp << " para " << nmDest << " não foi encontrado.\n" << endl;
+        return;
+    }
+    if (transpEncontrado->getLocAtual() != tjtEncontrado->getOrigem()) {
+        cout << "O transporte " << nmTransp << " não está na cidade de origem do trajeto.\n" << endl;
+        return;
+    }
+    if (transpEncontrado->getTipo() != tjtEncontrado->getTpo()) {
+        cout << "O transporte " << nmTransp << " não é compatível com o tipo do trajeto.\n" << endl;
+        return;
+    }
+
+    transpEncontrado->iniciarViagem(tjtEncontrado);
+    transpEncontrado->setLocAtual(nullptr);
+
+    cout << "O transporte " << nmTransp << " iniciou a viagem de " << nmOrigTransp << " para " << nmDest << ".\n" << endl;
+}
+
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
   //  return this->nome;
