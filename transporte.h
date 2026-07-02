@@ -29,6 +29,8 @@ public:
     int getVeloc();
     int getDistDesc();
     int getTempoDesc();
+    int getDistPerc();
+
     Cidade* getLocAtual();
 
     void setLocAtual(Cidade* loc);
@@ -37,4 +39,7 @@ public:
 
     void iniciarViagem(Trajeto* tjt);
     Trajeto* getTjtAtual();
+
+    void setDistPerc(int dist);
+    void desembarcarTodos();
 };

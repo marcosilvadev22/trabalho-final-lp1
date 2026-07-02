@@ -182,6 +182,55 @@ void ControladorTransito::iniciarViagem(string nmTransp, string nmOrigTransp, st
     cout << "O transporte " << nmTransp << " iniciou a viagem de " << nmOrigTransp << " para " << nmDest << ".\n" << endl;
 }
 
+void ControladorTransito::avancarTempo(int tempo) {
+
+    cout << "Avançando o tempo em " << tempo << " horas.\n" << endl;
+
+    for (Transporte* transp : transportes) {
+
+        if (transp->getTjtAtual() != nullptr) {
+
+            // int distPerc = transp->getDistPerc();
+
+
+            int distPerc = transp->getVeloc() * tempo;
+            int par = distPerc / transp->getDistDesc();
+            int tempoPerd = par * transp->getTempoDesc();
+            int tempoReal = tempo - tempoPerd;
+            
+            if (tempoReal < 0) {
+                tempoReal = 0;
+            }
+
+            int distReal = tempoReal * transp->getVeloc();
+            transp->setDistPerc(transp->getDistPerc() + distReal);
+
+            Trajeto* tjtAtual = transp->getTjtAtual();
+
+            if(transp->getDistPerc() >= tjtAtual->getDist()) {
+                transp->setLocAtual(tjtAtual->getDest());
+                transp->iniciarViagem(nullptr); 
+                transp->desembarcarTodos();
+               // transp->setDistPerc(0);
+                cout << "O transporte " << transp->getNome() << " chegou ao destino " << transp->getLocAtual()->getNome() << ".\n" << endl;
+            } else {
+                cout << "O transporte " << transp->getNome() << " percorreu " << distReal << " km na viagem.\n" << endl;
+            }
+
+           /*  if (nvDistPerc >= transp->getTjtAtual()->getDist()) {
+                transp->setLocAtual(transp->getTjtAtual()->getDest());
+                transp->desembarcarTodos();
+                transp->setDistPerc(0);
+                cout << "O transporte " << transp->getNome() << " chegou ao destino " << transp->getLocAtual()->getNome() << ".\n" << endl;
+            } else {
+                transp->setDistPerc(novaDistPercorrida);
+                cout << "O transporte " << transp->getNome() << " percorreu " << novaDistPercorrida << " km na viagem.\n" << endl;
+            } */
+        }
+    }
+    cout <<"---------------------\n" << endl;
+}
+
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
   //  return this->nome;

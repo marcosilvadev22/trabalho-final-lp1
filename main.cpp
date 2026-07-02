@@ -10,7 +10,7 @@ int main() {
     int opcao = 0;
     string nCidade, nOrigem, nDestino, nTrans, nCidTrans, nVeic, nOrig, nDest;
     char tVia, tTrans;
-    int dist, capc, veloc, distDesc, tempoDesc;
+    int dist, capc, veloc, distDesc, tempoDesc, tempoPass;
 
     while (opcao != 9) {
         cout << "=== GUANABARA EMPRESA DE TRANSPORTE COLETIVO S.A. ===\n" << endl;
@@ -88,6 +88,12 @@ int main() {
 
                 controlador.iniciarViagem(nVeic, nOrig, nDest);
                 break;
+            case 7: 
+
+                cout << "Digite Quantas horas se passaram: ";
+                cin >> tempoPass;
+                controlador.avancarTempo(tempoPass); 
+
             case 9:
                 cout << "Saindo do sistema em 3,2,1..." << endl;
                 break;

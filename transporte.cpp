@@ -40,6 +40,10 @@ int Transporte::getTempoDesc() {
     return this->tempoDesc;
 }
 
+int Transporte::getDistPerc() {
+    return this->distPerc;
+}
+
 Cidade* Transporte::getLocAtual() {
     return this->locAtual;
 }
@@ -62,4 +66,12 @@ void Transporte::iniciarViagem(Trajeto* tjt) {
 
 Trajeto* Transporte::getTjtAtual() {
     return this->tjtAtual;
+}
+
+void Transporte::setDistPerc(int dist) {
+    this->distPerc = dist;
+}
+
+void Transporte::desembarcarTodos() {
+    passageirosEmbarc.clear();
 }
