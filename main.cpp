@@ -21,11 +21,18 @@ int main() {
         cout << "4. Cadastrar Transporte\n" << endl;
         cout << "5. Embarcar Passageiro\n" << endl;
         cout << "6. Iniciar Viagem\n" << endl;
-        cout << "7. Avançar Tempo\n" << endl;
+        cout << "7. Avancar Tempo\n" << endl;
         cout << "8. Mostrar Status\n" << endl;
         cout << "9. Sair\n" << endl;
-        cout << "Escolha uma opção: ";
+        cout << "Escolha uma opcao: ";
         cin >> opcao;
+
+        if (cin.fail()) {
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
+            cout << "Entrada inválida! Por favor, digite um número." << endl;
+            continue; 
+        }
 
         switch (opcao) {
             case 1:

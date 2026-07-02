@@ -253,6 +253,21 @@ void ControladorTransito::mostrarStatus() {
     cout <<"---------------------\n" << endl;
 }
 
+ControladorTransito::~ControladorTransito() {
+    for (Cidade* cid : cidades) {
+        delete cid;
+    }
+    for (Passageiro* pass : passageiros) {
+        delete pass;
+    }
+    for (Trajeto* tjt : trajetos) {
+        delete tjt;
+    }
+    for (Transporte* transp : transportes) {
+        delete transp;
+    }
+}
+
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
   //  return this->nome;

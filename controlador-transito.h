@@ -14,9 +14,11 @@ class ControladorTransito {
         std::vector<Trajeto*> trajetos;
         std::vector<Transporte*> transportes;
     public:
-        void cadastrarCidade(std::string nome);
-    //string getNome();
 
+    ~ControladorTransito();
+
+        void cadastrarCidade(std::string nome);
+    //string getNome()
         void cadastrarPassageiro(std::string nome, std::string locAtual);
         void cadastrarTrajeto(std::string nmorigem, std::string nmdest, char tpo, int dist);
         void cadastrarTransporte(std::string nome, char tp, int capc, int veloc, int distDesc, int tempoDesc, std::string locAtual);
