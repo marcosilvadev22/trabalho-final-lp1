@@ -20,4 +20,5 @@ class ControladorTransito {
         void cadastrarPassageiro(std::string nome, std::string locAtual);
         void cadastrarTrajeto(std::string nmorigem, std::string nmdest, char tpo, int dist);
         void cadastrarTransporte(std::string nome, char tp, int capc, int veloc, int distDesc, int tempoDesc, std::string locAtual);
+        void embarcarPassageiro(std:: string nmPassageiro, std:: string nmTransp);
 };

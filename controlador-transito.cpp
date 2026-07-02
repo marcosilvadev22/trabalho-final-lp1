@@ -88,6 +88,58 @@ void ControladorTransito::cadastrarTransporte(string nome, char tp, int capc, in
 
     cout << "O transporte " << nome << " foi cadastrado na cidade " << locAtual << ".\n" << endl;
 }
+
+void ControladorTransito::embarcarPassageiro(string nmPassageiro, string nmTransp) {
+    Passageiro* passagEncontrado = nullptr;
+    Transporte* transpEncontrado = nullptr;
+
+    for (Passageiro* pass : passageiros) {
+        if (pass->getNome() == nmPassageiro) {
+            passagEncontrado = pass;
+
+        }
+    }
+
+    for (Transporte* transp : transportes) {
+        if (transp->getNome() == nmTransp) {
+            transpEncontrado = transp;
+
+        }
+    }
+
+    if (passagEncontrado == nullptr || transpEncontrado == nullptr) {
+        cout << "O passageiro ou transporte não foi encontrado.\n" << endl;
+        return;
+
+    }
+
+    if (passagEncontrado->getLocAtual() != transpEncontrado->getLocAtual()) {
+        cout << "O passageiro " << nmPassageiro << " não está na mesma cidade que o transporte " << nmTransp << ".\n" << endl;
+        return;
+    }
+
+    if (transpEncontrado->embarcar(passagEncontrado)) {
+        cout << "O passageiro " << nmPassageiro << " foi embarcado no transporte " << nmTransp << ".\n" << endl;
+    } else {
+        cout << "Não foi possível embarcar o passageiro " << nmPassageiro << " no transporte " << nmTransp << ".\n" << endl;
+    } // novo teste que deu certo
+
+    /*if (passagEncontrado == nullptr) {
+        cout << "O passageiro " << nmPassageiro << " não foi encontrado.\n" << endl;
+        return;
+    }
+
+    if (transpEncontrado == nullptr) {
+        cout << "O transporte " << nmTransp << " não foi encontrado.\n" << endl;
+        return;
+    
+
+    if (transpEncontrado->embarcar(passagEncontrado)) {
+        cout << "O passageiro " << nmPassageiro << " foi embarcado no transporte " << nmTransp << ".\n" << endl;
+    } else {
+        cout << "Não foi possível embarcar o passageiro " << nmPassageiro << " no transporte " << nmTransp << ".\n" << endl;
+    }} teste que deu errado */
+}
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
   //  return this->nome;

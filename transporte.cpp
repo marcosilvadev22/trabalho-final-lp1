@@ -45,3 +45,11 @@ Cidade* Transporte::getLocAtual() {
 void Transporte::setLocAtual(Cidade* loc) {
     this->locAtual = loc;
 }
+
+bool Transporte::embarcar(Passageiro* p) {
+    if (passageirosEmbarc.size() < capc) {
+        passageirosEmbarc.push_back(p);
+        return true;
+    }
+    return false;
+}

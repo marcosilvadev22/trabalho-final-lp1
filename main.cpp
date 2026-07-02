@@ -42,7 +42,7 @@ int main() {
                 cin >> dist;
                 controlador.cadastrarTrajeto(nOrigem, nDestino, tVia, dist);
                 break;
-                case 4: 
+            case 4: 
                 cout << "Digite o nome do transporte: ";
                 cin >> ws;
                 getline(cin, nTrans);
@@ -63,7 +63,19 @@ int main() {
 
                 controlador.cadastrarTransporte(nTrans, tTrans, capc, veloc, distDesc, tempoDesc, nCidTrans);
                 break;
-                case 9:
+
+            case 5: 
+                cout << "Digite o nome do passageiro: ";
+                cin >> ws;
+                getline(cin, nTrans);
+
+                cout << "Digite o nome do transporte: ";
+                cin >> ws;
+                getline(cin, nTrans);
+
+                controlador.embarcarPassageiro(nTrans, nTrans);
+                break;
+            case 9:
                 cout << "Saindo do sistema em 3,2,1..." << endl;
                 break;
             default:
