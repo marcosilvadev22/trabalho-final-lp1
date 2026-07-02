@@ -2,6 +2,7 @@
 #include "cidade.h" 
 #include "passageiro.h"
 #include "trajeto.h"
+#include "transporte.h"
 
 using namespace std; 
 
@@ -65,6 +66,27 @@ void ControladorTransito::cadastrarPassageiro(string nome, string locAtual) {
     trajetos.push_back(nvTrajeto);
 
     cout << "O trajeto de " << nmorigem << " para " << nmdest << " foi cadastrado com sucesso.\n" << endl;
+}
+
+void ControladorTransito::cadastrarTransporte(string nome, char tp, int capc, int veloc, int distDesc, int tempoDesc, string locAtual) {
+    Cidade* cidEncontrada = nullptr;
+
+    for (Cidade* cid : cidades) {
+        if (cid->getNome() == locAtual) {
+            cidEncontrada = cid;
+            break;
+        }
+    }
+
+    if (cidEncontrada == nullptr) {
+        cout << "A cidade " << locAtual << " não foi encontrada no mapa. Inicie em uma cidade válida!\n" << endl;
+        return;
+    }
+
+    Transporte* nvTransporte = new Transporte(nome, tp, capc, veloc, distDesc, tempoDesc, cidEncontrada);
+    transportes.push_back(nvTransporte);
+
+    cout << "O transporte " << nome << " foi cadastrado na cidade " << locAtual << ".\n" << endl;
 }
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
