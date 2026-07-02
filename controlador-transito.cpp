@@ -231,6 +231,28 @@ void ControladorTransito::avancarTempo(int tempo) {
     cout <<"---------------------\n" << endl;
 }
 
+void ControladorTransito::mostrarStatus() {
+    cout << "=== STATUS ATUAL DO SISTEMA ===\n" << endl;
+
+    cout << "Cidades cadastradas:\n" << endl;
+    for (Cidade* cid : cidades) {
+        cout << "- " << cid->getNome() << endl;
+    }
+    
+    cout << "\nPassageiros cadastrados:\n" << endl;
+    for (Passageiro* pass : passageiros) {
+        string locAtualPass = (pass->getLocAtual() != nullptr) ? pass->getLocAtual()->getNome() : "Em viagem";
+        cout << "- " << pass->getNome() << " (Localizacao atual: " << locAtualPass << ")" << endl;
+    }
+    
+    cout << "\nTransportes cadastrados:\n" << endl;
+    for (Transporte* transp : transportes) {
+        string locAtualTrans = (transp->getLocAtual() != nullptr) ? transp->getLocAtual()->getNome() : "Em viagem";
+        cout << "- " << transp->getNome() << " (Localizacao atual: " << locAtualTrans << ")" << endl;
+    }
+    cout <<"---------------------\n" << endl;
+}
+
 // Método vazio por enquanto
 //string ControladorTransito::getNome() {
   //  return this->nome;

@@ -8,7 +8,7 @@ int main() {
 
     ControladorTransito controlador;
     int opcao = 0;
-    string nCidade, nOrigem, nDestino, nTrans, nCidTrans, nVeic, nOrig, nDest;
+    string nCidade, nOrigem, nDestino, nTrans, nCidTrans, nVeic, nOrig, nDest, nPass;
     char tVia, tTrans;
     int dist, capc, veloc, distDesc, tempoDesc, tempoPass;
 
@@ -19,6 +19,10 @@ int main() {
         cout << "2. Cadastrar Passageiro\n" << endl; // ainda falta a implementação na main 
         cout << "3. Cadastrar Trajeto\n" << endl;
         cout << "4. Cadastrar Transporte\n" << endl;
+        cout << "5. Embarcar Passageiro\n" << endl;
+        cout << "6. Iniciar Viagem\n" << endl;
+        cout << "7. Avançar Tempo\n" << endl;
+        cout << "8. Mostrar Status\n" << endl;
         cout << "9. Sair\n" << endl;
         cout << "Escolha uma opção: ";
         cin >> opcao;
@@ -28,6 +32,16 @@ int main() {
                 cout << "Digite o nome da cidade: ";
                 cin >> nCidade;
                 controlador.cadastrarCidade(nCidade);
+                break;
+            case 2:
+                cout << "Digite o nome do passageiro: ";
+                cin >> ws;
+                getline(cin, nPass);
+
+                cout << "Digite o nome da cidade onde o passageiro se encontra: ";
+                getline(cin, nCidTrans);
+
+                controlador.cadastrarPassageiro(nPass, nCidTrans);
                 break;
             case 3: 
                 cout << "Digite o nome da cidade de origem: ";
@@ -93,7 +107,10 @@ int main() {
                 cout << "Digite Quantas horas se passaram: ";
                 cin >> tempoPass;
                 controlador.avancarTempo(tempoPass); 
-
+                break;
+            case 8:
+                controlador.mostrarStatus();
+                break;
             case 9:
                 cout << "Saindo do sistema em 3,2,1..." << endl;
                 break;

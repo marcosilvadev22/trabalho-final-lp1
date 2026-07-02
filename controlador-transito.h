@@ -23,4 +23,5 @@ class ControladorTransito {
         void embarcarPassageiro(std:: string nmPassageiro, std:: string nmTransp);
         void iniciarViagem(std:: string nmTransp, std:: string nmOrigTransp, std:: string nmDest);
         void avancarTempo(int tempo);
+        void mostrarStatus();
 };
