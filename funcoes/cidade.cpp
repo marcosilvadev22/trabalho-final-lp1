@@ -1,12 +1,14 @@
-#include "cidade.h"
+#include "../classes/cidade.h"
 
 using namespace std;
 // Construtor vazio por enquanto
-Cidade::Cidade(string nome) {
-    this->nome = nome; 
+Cidade::Cidade(string nome)
+{
+    this->nome = nome;
 }
 
 // Método vazio por enquanto
-string Cidade::getNome() {
+string Cidade::getNome()
+{
     return this->nome;
 }

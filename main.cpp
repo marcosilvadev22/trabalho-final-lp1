@@ -1,10 +1,12 @@
 #include <iostream>
 #include <string>
-#include "controlador-transito.h"
+#include "classes/controlador-transito.h"
+#include "classes/cidade.h"
 
 using namespace std;
 
-int main() {
+int main()
+{
 
     ControladorTransito controlador;
     int opcao = 0;
@@ -12,119 +14,133 @@ int main() {
     char tVia, tTrans;
     int dist, capc, veloc, distDesc, tempoDesc, tempoPass;
 
-    while (opcao != 9) {
-        cout << "=== GUANABARA EMPRESA DE TRANSPORTE COLETIVO S.A. ===\n" << endl;
-        cout << "Sistema de controle de viagens\n" << endl;
-        cout << "1. Cadastrar Cidade\n" << endl;
-        cout << "2. Cadastrar Passageiro\n" << endl; // ainda falta a implementação na main 
-        cout << "3. Cadastrar Trajeto\n" << endl;
-        cout << "4. Cadastrar Transporte\n" << endl;
-        cout << "5. Embarcar Passageiro\n" << endl;
-        cout << "6. Iniciar Viagem\n" << endl;
-        cout << "7. Avancar Tempo\n" << endl;
-        cout << "8. Mostrar Status\n" << endl;
-        cout << "9. Sair\n" << endl;
+    while (opcao != 9)
+    {
+        cout << "=== GUANABARA EMPRESA DE TRANSPORTE COLETIVO S.A. ===\n"
+             << endl;
+        cout << "Sistema de controle de viagens\n"
+             << endl;
+        cout << "1. Cadastrar Cidade\n"
+             << endl;
+        cout << "2. Cadastrar Passageiro\n"
+             << endl; // ainda falta a implementação na main
+        cout << "3. Cadastrar Trajeto\n"
+             << endl;
+        cout << "4. Cadastrar Transporte\n"
+             << endl;
+        cout << "5. Embarcar Passageiro\n"
+             << endl;
+        cout << "6. Iniciar Viagem\n"
+             << endl;
+        cout << "7. Avancar Tempo\n"
+             << endl;
+        cout << "8. Mostrar Status\n"
+             << endl;
+        cout << "9. Sair\n"
+             << endl;
         cout << "Escolha uma opcao: ";
         cin >> opcao;
 
-        if (cin.fail()) {
-            cin.clear(); 
-            cin.ignore(10000, '\n'); 
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
             cout << "Entrada inválida! Por favor, digite um número." << endl;
-            continue; 
+            continue;
         }
 
-        switch (opcao) {
-            case 1:
-                cout << "Digite o nome da cidade: ";
-                cin >> nCidade;
-                controlador.cadastrarCidade(nCidade);
-                break;
-            case 2:
-                cout << "Digite o nome do passageiro: ";
-                cin >> ws;
-                getline(cin, nPass);
+        switch (opcao)
+        {
+        case 1:
+            cout << "Digite o nome da cidade: ";
+            cin >> nCidade;
+            controlador.cadastrarCidade(nCidade);
+            break;
+        case 2:
+            cout << "Digite o nome do passageiro: ";
+            cin >> ws;
+            getline(cin, nPass);
 
-                cout << "Digite o nome da cidade onde o passageiro se encontra: ";
-                getline(cin, nCidTrans);
+            cout << "Digite o nome da cidade onde o passageiro se encontra: ";
+            getline(cin, nCidTrans);
 
-                controlador.cadastrarPassageiro(nPass, nCidTrans);
-                break;
-            case 3: 
-                cout << "Digite o nome da cidade de origem: ";
-                cin >> ws;
-                getline(cin, nOrigem);
+            controlador.cadastrarPassageiro(nPass, nCidTrans);
+            break;
+        case 3:
+            cout << "Digite o nome da cidade de origem: ";
+            cin >> ws;
+            getline(cin, nOrigem);
 
-                cout << "Digite o nome da cidade de destino: ";
-                getline(cin, nDestino);
-                cout << "Digite o tipo de via (A para asfalto, T para terra): ";
-                cin >> tVia;
-                cout << "Digite a distância entre as cidades: ";
-                cin >> dist;
-                controlador.cadastrarTrajeto(nOrigem, nDestino, tVia, dist);
-                break;
-            case 4: 
-                cout << "Digite o nome do transporte: ";
-                cin >> ws;
-                getline(cin, nTrans);
+            cout << "Digite o nome da cidade de destino: ";
+            getline(cin, nDestino);
+            cout << "Digite o tipo de via (A para asfalto, T para terra): ";
+            cin >> tVia;
+            cout << "Digite a distância entre as cidades: ";
+            cin >> dist;
+            controlador.cadastrarTrajeto(nOrigem, nDestino, tVia, dist);
+            break;
+        case 4:
+            cout << "Digite o nome do transporte: ";
+            cin >> ws;
+            getline(cin, nTrans);
 
-                cout << "Digite o tipo de transporte (A - Aquatico, T - Terrestre, AR - Aereo): ";
-                cin >> tTrans;
-                cout << "Digite a capacidade de passageiros do transporte: ";
-                cin >> capc;
-                cout << "Digite a velocidade do transporte: ";
-                cin >> veloc;
-                cout << "Digite a distância ate precisar descansar: ";
-                cin >> distDesc;
-                cout << "Digite o tempo de desccanso: ";
-                cin >> tempoDesc;
-                cout << "Digite o nome da cidade onde o transporte esta localizado: ";
-                cin >> ws;
-                getline(cin, nCidTrans);
+            cout << "Digite o tipo de transporte (A - Aquatico, T - Terrestre, AR - Aereo): ";
+            cin >> tTrans;
+            cout << "Digite a capacidade de passageiros do transporte: ";
+            cin >> capc;
+            cout << "Digite a velocidade do transporte: ";
+            cin >> veloc;
+            cout << "Digite a distância ate precisar descansar: ";
+            cin >> distDesc;
+            cout << "Digite o tempo de desccanso: ";
+            cin >> tempoDesc;
+            cout << "Digite o nome da cidade onde o transporte esta localizado: ";
+            cin >> ws;
+            getline(cin, nCidTrans);
 
-                controlador.cadastrarTransporte(nTrans, tTrans, capc, veloc, distDesc, tempoDesc, nCidTrans);
-                break;
+            controlador.cadastrarTransporte(nTrans, tTrans, capc, veloc, distDesc, tempoDesc, nCidTrans);
+            break;
 
-            case 5: 
-                cout << "Digite o nome do passageiro: ";
-                cin >> ws;
-                getline(cin, nTrans);
+        case 5:
+            cout << "Digite o nome do passageiro: ";
+            cin >> ws;
+            getline(cin, nTrans);
 
-                cout << "Digite o nome do transporte: ";
-                cin >> ws;
-                getline(cin, nTrans);
+            cout << "Digite o nome do transporte: ";
+            cin >> ws;
+            getline(cin, nTrans);
 
-                controlador.embarcarPassageiro(nTrans, nTrans);
-                break;
-            case 6:
-                cout << "Digite o nome do Veiculo: ";
-                cin >> ws;
-                getline(cin, nVeic);
+            controlador.embarcarPassageiro(nTrans, nTrans);
+            break;
+        case 6:
+            cout << "Digite o nome do Veiculo: ";
+            cin >> ws;
+            getline(cin, nVeic);
 
-                cout << "Digite o nome da cidade de origem do Veiculo: ";
-                getline(cin, nOrig);
+            cout << "Digite o nome da cidade de origem do Veiculo: ";
+            getline(cin, nOrig);
 
-                cout << "Digite o nome da cidade de destino do veiculo: ";
-                getline(cin, nDest);
+            cout << "Digite o nome da cidade de destino do veiculo: ";
+            getline(cin, nDest);
 
-                controlador.iniciarViagem(nVeic, nOrig, nDest);
-                break;
-            case 7: 
+            controlador.iniciarViagem(nVeic, nOrig, nDest);
+            break;
+        case 7:
 
-                cout << "Digite Quantas horas se passaram: ";
-                cin >> tempoPass;
-                controlador.avancarTempo(tempoPass); 
-                break;
-            case 8:
-                controlador.mostrarStatus();
-                break;
-            case 9:
-                cout << "Saindo do sistema em 3,2,1..." << endl;
-                break;
-            default:
-                cout << "Opção inválida!" << endl;
+            cout << "Digite Quantas horas se passaram: ";
+            cin >> tempoPass;
+            controlador.avancarTempo(tempoPass);
+            break;
+        case 8:
+            controlador.mostrarStatus();
+            break;
+        case 9:
+            cout << "Saindo do sistema em 3,2,1..." << endl;
+            break;
+        default:
+            cout << "Opção inválida!" << endl;
         }
     }
-    // cout << "Sistema a iniciar..." << endl; 
+    // cout << "Sistema a iniciar..." << endl;
     return 0;
 }

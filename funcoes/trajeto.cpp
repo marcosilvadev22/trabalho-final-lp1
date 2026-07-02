@@ -1,27 +1,31 @@
-#include "trajeto.h"
+#include "../classes/trajeto.h"
 
 using namespace std;
 
-Trajeto::Trajeto(Cidade* origem, Cidade* dest, char tpo, int dist) {
+Trajeto::Trajeto(Cidade *origem, Cidade *dest, char tpo, int dist)
+{
     this->origem = origem;
     this->dest = dest;
     this->tpo = tpo;
     this->dist = dist;
 }
 
-
-Cidade* Trajeto::getOrigem() {
+Cidade *Trajeto::getOrigem()
+{
     return this->origem;
 }
 
-Cidade* Trajeto::getDest() {
+Cidade *Trajeto::getDest()
+{
     return this->dest;
 }
 
-char Trajeto::getTpo() {
+char Trajeto::getTpo()
+{
     return this->tpo;
 }
 
-int Trajeto::getDist() {
+int Trajeto::getDist()
+{
     return this->dist;
 }
